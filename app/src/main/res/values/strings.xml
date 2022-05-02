@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LADM_U3_P1_JUANSOLTERO</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Autos</string>
+    <string name="title_notifications">Arrendamientos</string>
+    <string name="title_activity_main2">MainActivity2</string>
+</resources>
