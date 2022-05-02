@@ -13,7 +13,7 @@ class Automovil(este: Context) {
     private var err = ""
 
 
-    fun mostrarTodos2(a:String, b:String): ArrayList<Automovil>{
+    fun mostrarTodos2(a:String, b:String, c:String): ArrayList<Automovil>{
         val basedatos = BaseDatos(este, "RENTA_AUTOS",null,1)
         err = ""
         var arreglo = ArrayList<Automovil>()
@@ -23,7 +23,7 @@ class Automovil(este: Context) {
             if(a=="MODELO" || a=="MARCA") {
                 SQLSELECT = "SELECT * FROM AUTOMOVIL WHERE ${a} = '${b}'"
             }else{
-                SQLSELECT = "SELECT * FROM AUTOMOVIL WHERE ${a} = ${b}"
+                SQLSELECT = "SELECT * FROM AUTOMOVIL WHERE ${a} BETWEEN ${b} AND ${c}"
             }
 
             var cursor = tabla.rawQuery(SQLSELECT,null)

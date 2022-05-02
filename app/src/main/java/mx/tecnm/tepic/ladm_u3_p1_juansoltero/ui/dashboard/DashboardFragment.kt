@@ -7,11 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import mx.tecnm.tepic.ladm_u3_p1_juansoltero.Automovil
@@ -51,15 +49,24 @@ class DashboardFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 if(binding.spinner1.selectedItemPosition == 0){
                     filtro = "MODELO"
+                    binding.clave2.setText("")
+                    binding.clave2.visibility = View.GONE
                 }
                 if(binding.spinner1.selectedItemPosition == 1){
                     filtro = "MARCA"
+                    binding.clave2.setText("")
+                    binding.clave2.visibility = View.GONE
                 }
                 if(binding.spinner1.selectedItemPosition == 2){
                     filtro = "KILOMETRAGE"
+                    binding.clave2.setText("")
+                    binding.clave2.visibility = View.VISIBLE
                 }
             }
         }
+        binding.clave2.visibility = View.GONE
+
+
         //codigo de bd
 
         binding.insert.setOnClickListener {
@@ -133,7 +140,7 @@ class DashboardFragment : Fragment() {
         }
         fun mostrarDatosEnListView2() {
             var listaAutos =
-                Automovil(requireContext()).mostrarTodos2(filtro, binding.clave.text.toString())
+                Automovil(requireContext()).mostrarTodos2(filtro, binding.clave.text.toString(), binding.clave2.text.toString())
             var ModeloAutos = ArrayList<String>()
             var MarcaAutos = ArrayList<String>()
             var kiloAutos = ArrayList<Int>()
